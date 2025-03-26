@@ -1,7 +1,10 @@
 import React from 'react';
-import { Paintbrush as Paint, Brush, Droplets, Home, Palette, Shield, Sun, PenTool as Tool } from 'lucide-react';
+import { Paintbrush as Paint, Brush, Droplets, Home, Palette, Shield, Sun, PenTool as Tool, MapPin } from 'lucide-react';
+import LocationPage from './components/LocationPage';
 
 function Services() {
+  const [selectedLocation, setSelectedLocation] = React.useState<string | null>(null);
+
   const services = [
     {
       icon: <Home className="h-12 w-12" />,
@@ -79,10 +82,66 @@ function Services() {
     }
   ];
 
+  const serviceAreas = [
+    {
+      name: 'Hampstead',
+      description: 'A growing coastal community known for its waterfront properties and family-friendly neighborhoods.'
+    },
+    {
+      name: 'Ogden',
+      description: 'An established neighborhood featuring a mix of classic and modern homes near Wilmington.'
+    },
+    {
+      name: 'Porters Neck',
+      description: 'An upscale community with beautiful homes and country club living.'
+    },
+    {
+      name: 'Bayshore',
+      description: 'A waterfront community with stunning views and distinctive homes.'
+    },
+    {
+      name: 'Scotts Hill',
+      description: 'A historic area with a blend of traditional and contemporary homes.'
+    },
+    {
+      name: 'Sloop Point',
+      description: 'A coastal gem featuring unique waterfront properties.'
+    },
+    {
+      name: 'Holly Ridge',
+      description: 'A growing community with new developments and coastal charm.'
+    },
+    {
+      name: 'Surf City',
+      description: 'A vibrant beach town with diverse architectural styles.'
+    },
+    {
+      name: 'Topsail Beach',
+      description: 'A beautiful beach community with classic coastal homes.'
+    },
+    {
+      name: 'Burgaw',
+      description: 'A historic town with charming homes and southern character.'
+    },
+    {
+      name: 'Castle Hayne',
+      description: 'A riverside community with diverse housing styles.'
+    }
+  ];
+
+  if (selectedLocation) {
+    return (
+      <LocationPage
+        location={serviceAreas.find(area => area.name === selectedLocation)!}
+        onBack={() => setSelectedLocation(null)}
+      />
+    );
+  }
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
       {/* Hero Section */}
-      <div className="relative pt-20">
+      <div className="relative pt-24">
         <div className="absolute inset-0">
           <img
             src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&q=80"
@@ -130,6 +189,35 @@ function Services() {
               </div>
             </div>
           ))}
+        </div>
+      </div>
+
+      {/* Service Areas */}
+      <div className="bg-white py-16">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-coastal-sky mb-4">Service Areas</h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              We proudly serve Wilmington and surrounding communities, bringing our expertise in painting and home improvement to these beautiful coastal areas.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {serviceAreas.map((area, index) => (
+              <button
+                key={index}
+                onClick={() => setSelectedLocation(area.name)}
+                className="group relative h-64 overflow-hidden rounded-lg shadow-lg transition-transform hover:scale-[1.02] focus:outline-none bg-gradient-to-br from-coastal-sky to-coastal-water p-6 text-left"
+              >
+                <div className="h-full flex flex-col justify-end">
+                  <div className="flex items-center mb-2">
+                    <MapPin className="h-5 w-5 text-white" />
+                    <h3 className="ml-2 text-xl font-semibold text-white">{area.name}</h3>
+                  </div>
+                  <p className="text-white/90">{area.description}</p>
+                </div>
+              </button>
+            ))}
+          </div>
         </div>
       </div>
 
