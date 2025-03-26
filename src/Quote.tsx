@@ -210,7 +210,7 @@ function Quote() {
               <Mail className="h-6 w-6 text-coastal-water mr-3" />
               <div>
                 <p className="text-sm text-gray-500">Email us at</p>
-                <p className="text-lg font-semibold">contact@hasinskipainting.com</p>
+                <p className="text-lg font-semibold">ahasinski95@gmail.com</p>
               </div>
             </div>
           </div>

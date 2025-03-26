@@ -117,7 +117,7 @@ function App() {
                     <Mail className="h-6 w-6 text-teal-600" />
                     <div className="ml-4">
                       <p className="text-sm font-medium text-gray-500">Email</p>
-                      <p className="text-lg font-semibold text-gray-900">contact@hasinskipainting.com</p>
+                      <p className="text-lg font-semibold text-gray-900">ahasinski95@gmail.com</p>
                     </div>
                   </div>
                   <div className="flex items-center bg-white/80 backdrop-blur-sm p-6 rounded-lg shadow-sm">

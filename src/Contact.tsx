@@ -45,7 +45,7 @@ function Contact() {
                 <Mail className="h-6 w-6 text-coastal-water mr-4" />
                 <div>
                   <h3 className="font-semibold text-lg">Email</h3>
-                  <p className="text-gray-600">contact@hasinskipainting.com</p>
+                  <p className="text-gray-600">ahasinski95@gmail.com</p>
                 </div>
               </div>
               <div className="flex items-center">
