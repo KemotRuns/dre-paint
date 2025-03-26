@@ -35,7 +35,7 @@ function Gallery() {
             className="relative h-80 bg-white rounded-lg overflow-hidden shadow-lg transition-transform hover:scale-[1.02]"
           >
             <img
-              src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80"
+              src="https://images.unsplash.com/photo-1600573472591-ee6b68d14c68"
               alt="Coastal Home Exterior"
               className="w-full h-full object-cover"
             />
