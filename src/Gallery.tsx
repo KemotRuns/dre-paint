@@ -11,7 +11,7 @@ function Gallery() {
       <div className="relative">
         <div className="absolute inset-0">
           <img
-            src="https://images.unsplash.com/photo-1600573472591-ee6b68d14c68?auto=format&fit=crop&q=80"
+            src="https://images.unsplash.com/photo-1505691938895-1758d7feb511?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             alt="Gallery hero"
             className="w-full h-[300px] object-cover"
           />
@@ -35,7 +35,7 @@ function Gallery() {
             className="relative h-80 bg-white rounded-lg overflow-hidden shadow-lg transition-transform hover:scale-[1.02]"
           >
             <img
-              src="https://images.unsplash.com/photo-1600573472591-ee6b68d14c68"
+              src="https://images.unsplash.com/photo-1525909002-1b05e0c869d8?q=80&w=2448&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
               alt="Coastal Home Exterior"
               className="w-full h-full object-cover"
             />
