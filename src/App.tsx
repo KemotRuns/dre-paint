@@ -1,5 +1,5 @@
 import React from 'react';
-import { Phone, Mail, MapPin, ChevronRight, Paintbrush as Paint } from 'lucide-react';
+import { Phone, Mail, MapPin, ChevronRight, Paintbrush as Paint, Menu, X } from 'lucide-react';
 import Services from './Services';
 import Quote from './Quote';
 import Contact from './Contact';
@@ -7,6 +7,12 @@ import Gallery from './Gallery';
 
 function App() {
   const [currentPage, setCurrentPage] = React.useState('home');
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
+
+  const handlePageChange = (page: string) => {
+    setCurrentPage(page);
+    setIsMobileMenuOpen(false);
+  };
 
   const renderPage = () => {
     switch (currentPage) {
@@ -41,14 +47,14 @@ function App() {
                 </p>
                 <div className="mt-10 flex gap-4">
                   <button 
-                    onClick={() => setCurrentPage('quote')}
+                    onClick={() => handlePageChange('quote')}
                     className="bg-teal-600 text-white px-8 py-3 rounded-md hover:bg-teal-700 transition flex items-center"
                   >
                     Get Started
                     <ChevronRight className="ml-2 h-5 w-5" />
                   </button>
                   <button 
-                    onClick={() => setCurrentPage('services')}
+                    onClick={() => handlePageChange('services')}
                     className="bg-white/90 text-gray-900 px-8 py-3 rounded-md hover:bg-white transition"
                   >
                     View Our Services
@@ -141,43 +147,98 @@ function App() {
       <nav className="bg-white/80 backdrop-blur-sm shadow-sm fixed w-full z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-20">
-            <div className="flex items-center cursor-pointer" onClick={() => setCurrentPage('home')}>
+            <div className="flex items-center cursor-pointer" onClick={() => handlePageChange('home')}>
               <Paint className="h-8 w-8 text-teal-600" />
               <span className="ml-2 text-xl font-semibold text-gray-900">Andrzej Hasinski Painting</span>
             </div>
             <div className="hidden md:flex items-center space-x-8">
               <button 
-                onClick={() => setCurrentPage('services')}
+                onClick={() => handlePageChange('services')}
                 className="text-gray-600 hover:text-teal-600"
               >
                 Services
               </button>
               <button
-                onClick={() => setCurrentPage('gallery')}
+                onClick={() => handlePageChange('gallery')}
                 className="text-gray-600 hover:text-teal-600"
               >
                 Gallery
               </button>
               <button
-                onClick={() => setCurrentPage('contact')}
+                onClick={() => handlePageChange('contact')}
                 className="text-gray-600 hover:text-teal-600"
               >
                 Contact
               </button>
               <button 
-                onClick={() => setCurrentPage('quote')}
+                onClick={() => handlePageChange('quote')}
                 className="bg-teal-600 text-white px-6 py-2 rounded-md hover:bg-teal-700 transition"
               >
                 Get a Quote
               </button>
             </div>
+            {/* Mobile menu button */}
+            <div className="md:hidden flex items-center">
+              <button
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className="text-gray-600 hover:text-teal-600 focus:outline-none"
+              >
+                {isMobileMenuOpen ? (
+                  <X className="h-6 w-6" />
+                ) : (
+                  <Menu className="h-6 w-6" />
+                )}
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Mobile menu */}
+        <div
+          className={`fixed inset-y-0 right-0 transform ${
+            isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
+          } w-64 bg-white shadow-lg transition-transform duration-300 ease-in-out md:hidden`}
+        >
+          <div className="p-6 space-y-6">
+            <button
+              onClick={() => handlePageChange('services')}
+              className="block w-full text-left px-4 py-2 text-gray-600 hover:text-teal-600 hover:bg-gray-50 rounded-md"
+            >
+              Services
+            </button>
+            <button
+              onClick={() => handlePageChange('gallery')}
+              className="block w-full text-left px-4 py-2 text-gray-600 hover:text-teal-600 hover:bg-gray-50 rounded-md"
+            >
+              Gallery
+            </button>
+            <button
+              onClick={() => handlePageChange('contact')}
+              className="block w-full text-left px-4 py-2 text-gray-600 hover:text-teal-600 hover:bg-gray-50 rounded-md"
+            >
+              Contact
+            </button>
+            <button
+              onClick={() => handlePageChange('quote')}
+              className="block w-full text-center px-4 py-2 bg-teal-600 text-white rounded-md hover:bg-teal-700 transition"
+            >
+              Get a Quote
+            </button>
           </div>
         </div>
       </nav>
+
+      {/* Overlay for mobile menu */}
+      {isMobileMenuOpen && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-50 z-0 md:hidden"
+          onClick={() => setIsMobileMenuOpen(false)}
+        />
+      )}
 
       {renderPage()}
     </div>
   );
 }
 
-export default App
+export default App;
