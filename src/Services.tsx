@@ -42,7 +42,7 @@ function Services() {
         'Fence restoration',
         'Pre-painting surface preparation'
       ],
-      image: 'https://images.unsplash.com/photo-1610501693690-64414e727fe3?auto=format&fit=crop&q=80',
+      image: 'https://images.unsplash.com/photo-1584986152939-01133e0d31a2?q=80&w=3174&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
       benefits: 'Remove dirt, mildew, and salt residue common in coastal environments.'
     },
     {
