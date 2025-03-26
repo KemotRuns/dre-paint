@@ -1,48 +1,26 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Paintbrush as Paint, Phone, Mail, Calendar } from 'lucide-react';
-import emailjs from '@emailjs/browser';
 
 function Quote() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    address: '',
-    serviceType: '',
-    projectSize: '',
-    preferredDate: '',
-    description: ''
-  });
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const formData = new FormData(e.currentTarget);
     
-    emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', formData, 'YOUR_PUBLIC_KEY')
-      .then((result) => {
-        console.log('Email sent successfully:', result.text);
-        alert('Quote request sent successfully!');
-        setFormData({
-          name: '',
-          email: '',
-          phone: '',
-          address: '',
-          serviceType: '',
-          projectSize: '',
-          preferredDate: '',
-          description: ''
-        });
-      }, (error) => {
-        console.error('Error sending email:', error.text);
-        alert('Failed to send quote request. Please try again.');
-      });
+    const emailBody = `
+Name: ${formData.get('name')}
+Email: ${formData.get('email')}
+Phone: ${formData.get('phone')}
+Address: ${formData.get('address')}
+Service Type: ${formData.get('serviceType')}
+Project Size: ${formData.get('projectSize')}
+Preferred Date: ${formData.get('preferredDate')}
+
+Project Description:
+${formData.get('description')}
+    `.trim();
+
+    const mailtoLink = `mailto:ahasinski95@gmail.com?subject=Quote Request&body=${encodeURIComponent(emailBody)}`;
+    window.location.href = mailtoLink;
   };
 
   return (
@@ -82,8 +60,6 @@ function Quote() {
                     type="text"
                     id="name"
                     name="name"
-                    value={formData.name}
-                    onChange={handleChange}
                     className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-coastal-water focus:ring-coastal-water"
                     required
                   />
@@ -94,8 +70,6 @@ function Quote() {
                     type="email"
                     id="email"
                     name="email"
-                    value={formData.email}
-                    onChange={handleChange}
                     className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-coastal-water focus:ring-coastal-water"
                     required
                   />
@@ -106,8 +80,6 @@ function Quote() {
                     type="tel"
                     id="phone"
                     name="phone"
-                    value={formData.phone}
-                    onChange={handleChange}
                     className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-coastal-water focus:ring-coastal-water"
                     required
                   />
@@ -118,8 +90,6 @@ function Quote() {
                     type="text"
                     id="address"
                     name="address"
-                    value={formData.address}
-                    onChange={handleChange}
                     className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-coastal-water focus:ring-coastal-water"
                     required
                   />
@@ -139,8 +109,6 @@ function Quote() {
                   <select
                     id="serviceType"
                     name="serviceType"
-                    value={formData.serviceType}
-                    onChange={handleChange}
                     className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-coastal-water focus:ring-coastal-water"
                     required
                   >
@@ -156,8 +124,6 @@ function Quote() {
                   <select
                     id="projectSize"
                     name="projectSize"
-                    value={formData.projectSize}
-                    onChange={handleChange}
                     className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-coastal-water focus:ring-coastal-water"
                     required
                   >
@@ -174,8 +140,6 @@ function Quote() {
                 <textarea
                   id="description"
                   name="description"
-                  value={formData.description}
-                  onChange={handleChange}
                   rows={4}
                   className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-coastal-water focus:ring-coastal-water"
                   placeholder="Please provide any additional details about your project..."
@@ -196,8 +160,6 @@ function Quote() {
                   type="date"
                   id="preferredDate"
                   name="preferredDate"
-                  value={formData.preferredDate}
-                  onChange={handleChange}
                   className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-coastal-water focus:ring-coastal-water"
                   required
                 />

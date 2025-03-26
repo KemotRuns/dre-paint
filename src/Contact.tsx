@@ -1,21 +1,18 @@
 import React from 'react';
 import { Phone, Mail, MapPin, Clock, MessageSquare } from 'lucide-react';
-import emailjs from '@emailjs/browser';
 
 function Contact() {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const form = e.currentTarget;
+    const formData = new FormData(e.currentTarget);
+    const name = formData.get('name');
+    const email = formData.get('email');
+    const phone = formData.get('phone');
+    const message = formData.get('message');
 
-    emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', form, 'YOUR_PUBLIC_KEY')
-      .then((result) => {
-          console.log('Email sent successfully:', result.text);
-          alert('Message sent successfully!');
-          form.reset();
-      }, (error) => {
-          console.error('Error sending email:', error.text);
-          alert('Failed to send message. Please try again.');
-      });
+    const mailtoLink = `mailto:ahasinski95@gmail.com?subject=Contact Form Submission&body=Name: ${name}%0D%0AEmail: ${email}%0D%0APhone: ${phone}%0D%0A%0D%0AMessage:%0D%0A${message}`;
+    
+    window.location.href = mailtoLink;
   };
 
   return (
