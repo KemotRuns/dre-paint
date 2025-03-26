@@ -144,7 +144,7 @@ function App() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
       {/* Navigation */}
-      <nav className="bg-white/80 backdrop-blur-sm shadow-sm fixed w-full z-10">
+      <nav className="bg-white shadow-sm fixed w-full z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-20">
             <div className="flex items-center cursor-pointer" onClick={() => handlePageChange('home')}>
@@ -197,30 +197,30 @@ function App() {
         <div
           className={`fixed inset-y-0 right-0 transform ${
             isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
-          } w-64 bg-white shadow-lg transition-transform duration-300 ease-in-out md:hidden`}
+          } w-64 bg-white shadow-xl transition-transform duration-300 ease-in-out md:hidden z-50`}
         >
-          <div className="p-6 space-y-6">
+          <div className="p-6 space-y-4 bg-white">
             <button
               onClick={() => handlePageChange('services')}
-              className="block w-full text-left px-4 py-2 text-gray-600 hover:text-teal-600 hover:bg-gray-50 rounded-md"
+              className="block w-full text-left px-4 py-3 text-gray-800 hover:text-teal-600 hover:bg-gray-100 rounded-md font-medium"
             >
               Services
             </button>
             <button
               onClick={() => handlePageChange('gallery')}
-              className="block w-full text-left px-4 py-2 text-gray-600 hover:text-teal-600 hover:bg-gray-50 rounded-md"
+              className="block w-full text-left px-4 py-3 text-gray-800 hover:text-teal-600 hover:bg-gray-100 rounded-md font-medium"
             >
               Gallery
             </button>
             <button
               onClick={() => handlePageChange('contact')}
-              className="block w-full text-left px-4 py-2 text-gray-600 hover:text-teal-600 hover:bg-gray-50 rounded-md"
+              className="block w-full text-left px-4 py-3 text-gray-800 hover:text-teal-600 hover:bg-gray-100 rounded-md font-medium"
             >
               Contact
             </button>
             <button
               onClick={() => handlePageChange('quote')}
-              className="block w-full text-center px-4 py-2 bg-teal-600 text-white rounded-md hover:bg-teal-700 transition"
+              className="block w-full text-center px-4 py-3 bg-teal-600 text-white rounded-md hover:bg-teal-700 transition font-medium"
             >
               Get a Quote
             </button>
@@ -231,7 +231,7 @@ function App() {
       {/* Overlay for mobile menu */}
       {isMobileMenuOpen && (
         <div
-          className="fixed inset-0 bg-black bg-opacity-50 z-0 md:hidden"
+          className="fixed inset-0 bg-black bg-opacity-50 z-40 md:hidden"
           onClick={() => setIsMobileMenuOpen(false)}
         />
       )}
