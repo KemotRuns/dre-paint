@@ -203,7 +203,7 @@ function Quote() {
               <Phone className="h-6 w-6 text-coastal-water mr-3" />
               <div>
                 <p className="text-sm text-gray-500">Call us at</p>
-                <p className="text-lg font-semibold">(910) 555-0123</p>
+                <p className="text-lg font-semibold">(910) 599-7008</p>
               </div>
             </div>
             <div className="flex items-center">

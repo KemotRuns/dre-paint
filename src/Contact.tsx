@@ -38,7 +38,7 @@ function Contact() {
                 <Phone className="h-6 w-6 text-coastal-water mr-4" />
                 <div>
                   <h3 className="font-semibold text-lg">Phone</h3>
-                  <p className="text-gray-600">(910) 555-0123</p>
+                  <p className="text-gray-600">(910) 599-7008</p>
                 </div>
               </div>
               <div className="flex items-center">
