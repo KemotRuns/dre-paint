@@ -1,11 +1,21 @@
 import React from 'react';
 import { Phone, Mail, MapPin, Clock, MessageSquare } from 'lucide-react';
+import emailjs from '@emailjs/browser';
 
 function Contact() {
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Handle form submission
-    console.log('Form submitted');
+    const form = e.currentTarget;
+
+    emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', form, 'YOUR_PUBLIC_KEY')
+      .then((result) => {
+          console.log('Email sent successfully:', result.text);
+          alert('Message sent successfully!');
+          form.reset();
+      }, (error) => {
+          console.error('Error sending email:', error.text);
+          alert('Failed to send message. Please try again.');
+      });
   };
 
   return (
@@ -38,7 +48,7 @@ function Contact() {
                 <Phone className="h-6 w-6 text-coastal-water mr-4" />
                 <div>
                   <h3 className="font-semibold text-lg">Phone</h3>
-                  <p className="text-gray-600">(910) 599-7008</p>
+                  <p className="text-gray-600">1 (910) 599-7008</p>
                 </div>
               </div>
               <div className="flex items-center">

@@ -110,7 +110,7 @@ function App() {
                     <Phone className="h-6 w-6 text-teal-600" />
                     <div className="ml-4">
                       <p className="text-sm font-medium text-gray-500">Call us</p>
-                      <p className="text-lg font-semibold text-gray-900">(910) 599-7008</p>
+                      <p className="text-lg font-semibold text-gray-900">1 (910) 599-7008</p>
                     </div>
                   </div>
                   <div className="flex items-center bg-white/80 backdrop-blur-sm p-6 rounded-lg shadow-sm">
@@ -180,4 +180,4 @@ function App() {
   );
 }
 
-export default App;
+export default App

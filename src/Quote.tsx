@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Paintbrush as Paint, Phone, Mail, Calendar } from 'lucide-react';
+import emailjs from '@emailjs/browser';
 
 function Quote() {
   const [formData, setFormData] = useState({
@@ -23,8 +24,25 @@ function Quote() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log('Form submitted:', formData);
+    
+    emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', formData, 'YOUR_PUBLIC_KEY')
+      .then((result) => {
+        console.log('Email sent successfully:', result.text);
+        alert('Quote request sent successfully!');
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          address: '',
+          serviceType: '',
+          projectSize: '',
+          preferredDate: '',
+          description: ''
+        });
+      }, (error) => {
+        console.error('Error sending email:', error.text);
+        alert('Failed to send quote request. Please try again.');
+      });
   };
 
   return (
@@ -203,7 +221,7 @@ function Quote() {
               <Phone className="h-6 w-6 text-coastal-water mr-3" />
               <div>
                 <p className="text-sm text-gray-500">Call us at</p>
-                <p className="text-lg font-semibold">(910) 599-7008</p>
+                <p className="text-lg font-semibold">1 (910) 599-7008</p>
               </div>
             </div>
             <div className="flex items-center">
